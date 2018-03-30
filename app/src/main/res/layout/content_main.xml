@@ -31,7 +31,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_marginTop="16dp"
         android:onClick="getPlayers"
         android:text="@string/button_get"

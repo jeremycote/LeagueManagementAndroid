@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -50,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getPlayers(View view) {
-
-        AsyncTask.execute(new Runnable() {
+        GetPlayers task = new GetPlayers();
+        task.execute();
+        /*
+        new AsyncTask() {
             @Override
             public void run() {
                 URL WebServer = null;
@@ -60,18 +64,18 @@ public class MainActivity extends AppCompatActivity {
                     HttpURLConnection myConnection = (HttpsURLConnection) WebServer.openConnection();
                     if (myConnection.getResponseCode() == 200) {
                         InputStream responseBody = myConnection.getInputStream();
-                        InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
-                        JsonReader jsonReader = new JsonReader(responseBodyReader);
-                        //print JsonReady;
+                        String connectionPrint = IOUtils.toString(responseBody, "UTF-8");
+
+                        //InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
+                        //JsonReader jsonReader = new JsonReader(responseBodyReader);
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        });
-        Intent intent = new Intent(this, MessageDisplay.class);
-        intent.putExtra(EXTRA_MESSAGE, "Hello World");
-        startActivity(intent);
+
+        }); */
     }
 
 
